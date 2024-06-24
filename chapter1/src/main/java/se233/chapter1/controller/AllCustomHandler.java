@@ -1,4 +1,4 @@
-package se223.chapter1.controller;
+package se233.chapter1.controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -7,11 +7,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.StackPane;
-import se223.chapter1.Launcher;
-import se223.chapter1.model.character.BasedCharacter;
-import se223.chapter1.model.item.Armor;
-import se223.chapter1.model.item.BasedEquipment;
-import se223.chapter1.model.item.Weapon;
+import se233.chapter1.Launcher;
+import se233.chapter1.model.character.BasedCharacter;
+import se233.chapter1.model.item.Armor;
+import se233.chapter1.model.item.BasedEquipment;
+import se233.chapter1.model.item.Weapon;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package se223.chapter1.model.item;
+package se233.chapter1.model.item;
 
 public class Armor extends BasedEquipment {
     private int defense, resistance;

@@ -1,19 +1,19 @@
-package se223.chapter1;
+package se233.chapter1;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import se223.chapter1.controller.GenCharacter;
-import se223.chapter1.controller.GenItemList;
-import se223.chapter1.model.character.BasedCharacter;
-import se223.chapter1.model.item.Armor;
-import se223.chapter1.model.item.BasedEquipment;
-import se223.chapter1.model.item.Weapon;
-import se223.chapter1.view.CharacterPane;
-import se223.chapter1.view.EquipPane;
-import se223.chapter1.view.InventoryPane;
+import se233.chapter1.controller.GenCharacter;
+import se233.chapter1.controller.GenItemList;
+import se233.chapter1.model.character.BasedCharacter;
+import se233.chapter1.model.item.Armor;
+import se233.chapter1.model.item.BasedEquipment;
+import se233.chapter1.model.item.Weapon;
+import se233.chapter1.view.CharacterPane;
+import se233.chapter1.view.EquipPane;
+import se233.chapter1.view.InventoryPane;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,6 @@
-package se223.chapter1.model.item;
+package se233.chapter1.model.item;
 
-import se223.chapter1.model.DamageType;
+import se233.chapter1.model.DamageType;
 
 public class Weapon extends BasedEquipment {
     private int power;

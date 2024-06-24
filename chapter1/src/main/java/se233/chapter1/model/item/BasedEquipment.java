@@ -1,4 +1,4 @@
-package se223.chapter1.model.item;
+package se233.chapter1.model.item;
 
 import javafx.scene.input.DataFormat;
 

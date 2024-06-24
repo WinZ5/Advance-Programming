@@ -3,6 +3,6 @@ module se223.chapter1 {
     requires javafx.fxml;
 
 
-    opens se223.chapter1 to javafx.fxml;
-    exports se223.chapter1;
+    opens se233.chapter1 to javafx.fxml;
+    exports se233.chapter1;
 }

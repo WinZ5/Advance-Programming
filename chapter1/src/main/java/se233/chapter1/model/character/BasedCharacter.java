@@ -1,8 +1,8 @@
-package se223.chapter1.model.character;
+package se233.chapter1.model.character;
 
-import se223.chapter1.model.DamageType;
-import se223.chapter1.model.item.Armor;
-import se223.chapter1.model.item.Weapon;
+import se233.chapter1.model.DamageType;
+import se233.chapter1.model.item.Armor;
+import se233.chapter1.model.item.Weapon;
 
 public class BasedCharacter {
     protected String name, imgpath;

@@ -1,6 +1,6 @@
-package se223.chapter1.model.character;
+package se233.chapter1.model.character;
 
-import se223.chapter1.model.DamageType;
+import se233.chapter1.model.DamageType;
 
 public class PhysicalCharacter extends BasedCharacter {
     public PhysicalCharacter(String name, String imgpath, int basedDef, int basedRes) {

@@ -1,4 +1,4 @@
-package se223.chapter1.view;
+package se233.chapter1.view;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -11,12 +11,10 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import se223.chapter1.Launcher;
-import se223.chapter1.model.item.Armor;
-import se223.chapter1.model.item.Weapon;
-
-import static se223.chapter1.controller.AllCustomHandler.GenCharacterHandler.onDragDropped;
-import static se223.chapter1.controller.AllCustomHandler.GenCharacterHandler.onDragOver;
+import se233.chapter1.Launcher;
+import se233.chapter1.model.item.Armor;
+import se233.chapter1.model.item.Weapon;
+import se233.chapter1.controller.AllCustomHandler;
 
 public class EquipPane extends ScrollPane {
     private Weapon equippedWeapon;
@@ -65,25 +63,25 @@ public class EquipPane extends ScrollPane {
         weaponImgGroup.setOnDragOver(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent e) {
-                onDragOver(e, "Weapon");
+                AllCustomHandler.GenCharacterHandler.onDragOver(e, "Weapon");
             }
         });
         armorImgGroup.setOnDragOver(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent e) {
-                onDragOver(e, "Armor");
+                AllCustomHandler.GenCharacterHandler.onDragOver(e, "Armor");
             }
         });
         weaponImgGroup.setOnDragDropped(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent e) {
-                onDragDropped(e, weaponLbl, weaponImgGroup);
+                AllCustomHandler.GenCharacterHandler.onDragDropped(e, weaponLbl, weaponImgGroup);
             }
         });
         armorImgGroup.setOnDragDropped(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent e) {
-                onDragDropped(e, armorLbl, armorImgGroup);
+                AllCustomHandler.GenCharacterHandler.onDragDropped(e, armorLbl, armorImgGroup);
             }
         });
         equipmentInfoPane.getChildren().addAll(weaponLbl, weaponImgGroup, armorLbl, armorImgGroup);

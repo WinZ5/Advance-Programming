@@ -1,4 +1,4 @@
-package se223.chapter1.view;
+package se233.chapter1.view;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -9,13 +9,11 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import se223.chapter1.Launcher;
-import se223.chapter1.model.item.BasedEquipment;
+import se233.chapter1.Launcher;
+import se233.chapter1.model.item.BasedEquipment;
+import se233.chapter1.controller.AllCustomHandler;
 
 import java.util.ArrayList;
-
-import static se223.chapter1.controller.AllCustomHandler.GenCharacterHandler.onDragDetected;
-import static se223.chapter1.controller.AllCustomHandler.GenCharacterHandler.onEquipDone;
 
 public class InventoryPane extends ScrollPane {
     private ArrayList<BasedEquipment> equipmentArray;
@@ -36,13 +34,13 @@ public class InventoryPane extends ScrollPane {
                 int finalI = i;
                 imageViewList[i].setOnDragDetected(new EventHandler<MouseEvent>() {
                     public void handle(MouseEvent event) {
-                        onDragDetected(event, equipmentArray.get(finalI), imageViewList[finalI]);
+                        AllCustomHandler.GenCharacterHandler.onDragDetected(event, equipmentArray.get(finalI), imageViewList[finalI]);
                     }
                 });
                 imageViewList[i].setOnDragDone(new EventHandler<DragEvent>() {
                     @Override
                     public void handle(DragEvent event) {
-                        onEquipDone(event);
+                        AllCustomHandler.GenCharacterHandler.onEquipDone(event);
                     }
                 });
             }

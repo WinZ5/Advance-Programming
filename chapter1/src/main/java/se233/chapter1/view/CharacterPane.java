@@ -1,4 +1,4 @@
-package se223.chapter1.view;
+package se233.chapter1.view;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -8,9 +8,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import se223.chapter1.Launcher;
-import se223.chapter1.controller.AllCustomHandler;
-import se223.chapter1.model.character.BasedCharacter;
+import se233.chapter1.Launcher;
+import se233.chapter1.controller.AllCustomHandler;
+import se233.chapter1.model.character.BasedCharacter;
 
 public class CharacterPane extends ScrollPane {
     private BasedCharacter character;
