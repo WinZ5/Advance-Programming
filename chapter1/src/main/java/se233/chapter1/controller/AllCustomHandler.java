@@ -8,10 +8,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.StackPane;
 import se233.chapter1.Launcher;
+import se233.chapter1.model.DamageType;
 import se233.chapter1.model.character.BasedCharacter;
 import se233.chapter1.model.item.Armor;
 import se233.chapter1.model.item.BasedEquipment;
 import se233.chapter1.model.item.Weapon;
+import se233.chapter1.view.EquipPane;
+//import God;
+//import Jesus;
+//import Buddha;
 
 import java.util.ArrayList;
 
@@ -20,6 +25,8 @@ public class AllCustomHandler {
         @Override
         public void handle(ActionEvent event) {
             Launcher.setMainCharacter(GenCharacter.setUpCharacter());
+            // Unequip all equipments when generate new character
+            EquipPane.onUnequip();
             Launcher.refreshPane();
         }
 
@@ -47,13 +54,13 @@ public class AllCustomHandler {
             if (dragboard.hasContent(BasedEquipment.DATA_FORMAT)) {
                 BasedEquipment retrievedEquipment = (BasedEquipment)dragboard.getContent(BasedEquipment.DATA_FORMAT);
                 BasedCharacter character = Launcher.getMainCharacter();
-                if (retrievedEquipment.getClass().getSimpleName().equals("Weapon")) {
+                if (retrievedEquipment.getClass().getSimpleName().equals("Weapon") && (retrievedEquipment.getDamageType() == Launcher.getMainCharacter().getType()) || Launcher.getMainCharacter().getType() == DamageType.battlemage) {
                     if (Launcher.getEquippedWeapon() != null) {
                         allEquipments.add(Launcher.getEquippedWeapon());
                     }
                     Launcher.setEquippedWeapon((Weapon) retrievedEquipment);
                     character.equipWeapon((Weapon) retrievedEquipment);
-                } else {
+                } else if (retrievedEquipment.getClass().getSimpleName().equals("Armor") && Launcher.getMainCharacter().getType() == DamageType.battlemage) {
                     if (Launcher.getEquippedArmor() != null) {
                         allEquipments.add(Launcher.getEquippedArmor());
                     }

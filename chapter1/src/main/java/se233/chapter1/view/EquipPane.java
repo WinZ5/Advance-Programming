@@ -3,6 +3,7 @@ package se233.chapter1.view;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -12,6 +13,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import se233.chapter1.Launcher;
+import se233.chapter1.controller.GenItemList;
+import se233.chapter1.model.character.BasedCharacter;
 import se233.chapter1.model.item.Armor;
 import se233.chapter1.model.item.Weapon;
 import se233.chapter1.controller.AllCustomHandler;
@@ -84,11 +87,29 @@ public class EquipPane extends ScrollPane {
                 AllCustomHandler.GenCharacterHandler.onDragDropped(e, armorLbl, armorImgGroup);
             }
         });
-        equipmentInfoPane.getChildren().addAll(weaponLbl, weaponImgGroup, armorLbl, armorImgGroup);
+
+        // Unequip Button - START
+        Button unequipButton = new Button();
+        unequipButton.setText("Unequip all");
+        unequipButton.setOnAction(event -> onUnequip());
+        equipmentInfoPane.getChildren().addAll(weaponLbl, weaponImgGroup, armorLbl, armorImgGroup, unequipButton);
         return equipmentInfoPane;
+        // Unequip Button - END
     }
 
-    public  void drawPane(Weapon equippedWeapon, Armor equippedArmor) {
+    // Unequip all function - START
+    public static void onUnequip() {
+        BasedCharacter character = Launcher.getMainCharacter();
+        Launcher.setEquippedWeapon(null);
+        Launcher.setEquippedArmor(null);
+        character.unEquipWeapon();
+        character.unEquipArmor();
+        Launcher.setAllEquipments(GenItemList.setUpItemList());
+        Launcher.refreshPane();
+    }
+    // Unequip all function - END
+
+    public void drawPane(Weapon equippedWeapon, Armor equippedArmor) {
         this.equippedWeapon = equippedWeapon;
         this.equippedArmor = equippedArmor;
         Pane equipmentInfo = getDetailsPane();
