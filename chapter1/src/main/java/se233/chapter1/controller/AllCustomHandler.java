@@ -80,15 +80,19 @@ public class AllCustomHandler {
             Dragboard dragboard = event.getDragboard();
             ArrayList<BasedEquipment> allEquipments = Launcher.getAllEquipments();
             BasedEquipment retrievedEquipment = (BasedEquipment)dragboard.getContent(BasedEquipment.DATA_FORMAT);
-            int pos = -1;
-            for (int i = 0; i < allEquipments.size(); i++) {
-                if (allEquipments.get(i).getName().equals(retrievedEquipment.getName())) {
-                    pos = i;
+            // Prevent item drop outside item slot - START
+            if (event.getTransferMode() == TransferMode.MOVE) {
+                int pos = -1;
+                for (int i = 0; i < allEquipments.size(); i++) {
+                    if (allEquipments.get(i).getName().equals(retrievedEquipment.getName())) {
+                        pos = i;
+                    }
+                }
+                if (pos != -1) {
+                    allEquipments.remove(pos);
                 }
             }
-            if (pos != -1) {
-                allEquipments.remove(pos);
-            }
+            // Prevent item drop outside item slot - END
             Launcher.setAllEquipments(allEquipments);
             Launcher.refreshPane();
         }
