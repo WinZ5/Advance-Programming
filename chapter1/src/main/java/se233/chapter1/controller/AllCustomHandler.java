@@ -60,12 +60,16 @@ public class AllCustomHandler {
                     }
                     Launcher.setEquippedWeapon((Weapon) retrievedEquipment);
                     character.equipWeapon((Weapon) retrievedEquipment);
-                } else if (retrievedEquipment.getClass().getSimpleName().equals("Armor") && Launcher.getMainCharacter().getType() == DamageType.battlemage) {
+                    dragComplete = true;
+                } else if (retrievedEquipment.getClass().getSimpleName().equals("Armor") && Launcher.getMainCharacter().getType() != DamageType.battlemage) {
                     if (Launcher.getEquippedArmor() != null) {
                         allEquipments.add(Launcher.getEquippedArmor());
                     }
                     Launcher.setEquippedArmor((Armor) retrievedEquipment);
                     character.equipArmor((Armor) retrievedEquipment);
+                    dragComplete = true;
+                } else {
+                    dragComplete = false;
                 }
                 Launcher.setMainCharacter(character);
                 Launcher.setAllEquipments(allEquipments);
@@ -78,7 +82,6 @@ public class AllCustomHandler {
                 lbl.setText(retrievedEquipment.getClass().getSimpleName() + ":\n" + retrievedEquipment.getName());
                 imgView.setImage(new Image(Launcher.class.getResource(retrievedEquipment.getImgpath()).toString()));
                 imgGroup.getChildren().add(imgView);
-                dragComplete = true;
             }
             event.setDropCompleted(dragComplete);
         }

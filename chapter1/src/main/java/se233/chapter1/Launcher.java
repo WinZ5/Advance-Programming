@@ -25,6 +25,7 @@ public class Launcher extends Application {
     private static CharacterPane characterPane = null;
     private static EquipPane equipPane = null;
     private static InventoryPane inventoryPane = null;
+    private static ArrayList<BasedEquipment> allEquipments = null;
 
     public static ArrayList<BasedEquipment> getAllEquipments() {
         return allEquipments;
@@ -33,8 +34,6 @@ public class Launcher extends Application {
     public static void setAllEquipments(ArrayList<BasedEquipment> allEquipments) {
         Launcher.allEquipments = allEquipments;
     }
-
-    private static ArrayList<BasedEquipment> allEquipments = null;
 
     public static Weapon getEquippedWeapon() {
         return equippedWeapon;
