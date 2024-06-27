@@ -89,25 +89,13 @@ public class EquipPane extends ScrollPane {
         });
 
         // Unequip Button - START
-        Button unequipButton = new Button();
-        unequipButton.setText("Unequip all");
-        unequipButton.setOnAction(event -> onUnequip());
-        equipmentInfoPane.getChildren().addAll(weaponLbl, weaponImgGroup, armorLbl, armorImgGroup, unequipButton);
-        return equipmentInfoPane;
+        Button unEquipButton = new Button();
+        unEquipButton.setText("Unequip all");
+        unEquipButton.setOnAction(event -> Launcher.onUnequip());
+        equipmentInfoPane.getChildren().addAll(weaponLbl, weaponImgGroup, armorLbl, armorImgGroup, unEquipButton);
         // Unequip Button - END
+        return equipmentInfoPane;
     }
-
-    // Unequip all function - START
-    public static void onUnequip() {
-        BasedCharacter character = Launcher.getMainCharacter();
-        Launcher.setEquippedWeapon(null);
-        Launcher.setEquippedArmor(null);
-        character.unEquipWeapon();
-        character.unEquipArmor();
-        Launcher.setAllEquipments(GenItemList.setUpItemList());
-        Launcher.refreshPane();
-    }
-    // Unequip all function - END
 
     public void drawPane(Weapon equippedWeapon, Armor equippedArmor) {
         this.equippedWeapon = equippedWeapon;

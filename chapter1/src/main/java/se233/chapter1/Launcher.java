@@ -51,6 +51,18 @@ public class Launcher extends Application {
         Launcher.equippedArmor = equippedArmor;
     }
 
+    // Unequip all function - START
+    public static void onUnequip() {
+        BasedCharacter character = Launcher.getMainCharacter();
+        Launcher.setEquippedWeapon(null);
+        Launcher.setEquippedArmor(null);
+        character.unEquipWeapon();
+        character.unEquipArmor();
+        Launcher.setAllEquipments(GenItemList.setUpItemList());
+        Launcher.refreshPane();
+    }
+    // Unequip all function - END
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Chapter 1");

@@ -25,8 +25,11 @@ public class AllCustomHandler {
         @Override
         public void handle(ActionEvent event) {
             Launcher.setMainCharacter(GenCharacter.setUpCharacter());
-            // Unequip all equipments when generate new character
-            EquipPane.onUnequip();
+            // Unequip all equipments when generate new character - START
+            if (Launcher.getEquippedWeapon() != null || Launcher.getEquippedArmor() != null) {
+                Launcher.onUnequip();
+            }
+            // Unequip all equipments when generate new character - END
             Launcher.refreshPane();
         }
 
@@ -43,7 +46,15 @@ public class AllCustomHandler {
             Dragboard dragboard = event.getDragboard();
             BasedEquipment retrievedEquipment = (BasedEquipment)dragboard.getContent(BasedEquipment.DATA_FORMAT);
             if (dragboard.hasContent(BasedEquipment.DATA_FORMAT) && retrievedEquipment.getClass().getSimpleName().equals(type)) {
-                event.acceptTransferModes(TransferMode.MOVE);
+                // Only allow Physical and Magical character to use weapon that match their class and doesn't allow BattleMage to wear armor - START
+                if (retrievedEquipment.getClass().getSimpleName().equals("Weapon") && (retrievedEquipment.getDamageType() == Launcher.getMainCharacter().getType())) {
+                    event.acceptTransferModes(TransferMode.MOVE);
+                } else if (retrievedEquipment.getClass().getSimpleName().equals("Weapon") && (Launcher.getMainCharacter().getType() == DamageType.battlemage )) {
+                    event.acceptTransferModes(TransferMode.MOVE);
+                } else if (retrievedEquipment.getClass().getSimpleName().equals("Armor") && (Launcher.getMainCharacter().getType() != DamageType.battlemage)) {
+                    event.acceptTransferModes(TransferMode.MOVE);
+                }
+                // Only allow Physical and Magical character to use weapon that match their class and doesn't allow BattleMage to wear armor - END
             }
         }
 
@@ -54,22 +65,18 @@ public class AllCustomHandler {
             if (dragboard.hasContent(BasedEquipment.DATA_FORMAT)) {
                 BasedEquipment retrievedEquipment = (BasedEquipment)dragboard.getContent(BasedEquipment.DATA_FORMAT);
                 BasedCharacter character = Launcher.getMainCharacter();
-                if (retrievedEquipment.getClass().getSimpleName().equals("Weapon") && (retrievedEquipment.getDamageType() == Launcher.getMainCharacter().getType()) || Launcher.getMainCharacter().getType() == DamageType.battlemage) {
+                if (retrievedEquipment.getClass().getSimpleName().equals("Weapon")) {
                     if (Launcher.getEquippedWeapon() != null) {
                         allEquipments.add(Launcher.getEquippedWeapon());
                     }
                     Launcher.setEquippedWeapon((Weapon) retrievedEquipment);
                     character.equipWeapon((Weapon) retrievedEquipment);
-                    dragComplete = true;
-                } else if (retrievedEquipment.getClass().getSimpleName().equals("Armor") && Launcher.getMainCharacter().getType() != DamageType.battlemage) {
+                } else if (retrievedEquipment.getClass().getSimpleName().equals("Armor")) {
                     if (Launcher.getEquippedArmor() != null) {
                         allEquipments.add(Launcher.getEquippedArmor());
                     }
                     Launcher.setEquippedArmor((Armor) retrievedEquipment);
                     character.equipArmor((Armor) retrievedEquipment);
-                    dragComplete = true;
-                } else {
-                    dragComplete = false;
                 }
                 Launcher.setMainCharacter(character);
                 Launcher.setAllEquipments(allEquipments);
@@ -82,6 +89,7 @@ public class AllCustomHandler {
                 lbl.setText(retrievedEquipment.getClass().getSimpleName() + ":\n" + retrievedEquipment.getName());
                 imgView.setImage(new Image(Launcher.class.getResource(retrievedEquipment.getImgpath()).toString()));
                 imgGroup.getChildren().add(imgView);
+                dragComplete = true;
             }
             event.setDropCompleted(dragComplete);
         }

@@ -1,4 +1,4 @@
-module se223.chapter1 {
+module se233.chapter1 {
     requires javafx.controls;
     requires javafx.fxml;
 
