@@ -13,10 +13,6 @@ import se233.chapter1.model.character.BasedCharacter;
 import se233.chapter1.model.item.Armor;
 import se233.chapter1.model.item.BasedEquipment;
 import se233.chapter1.model.item.Weapon;
-import se233.chapter1.view.EquipPane;
-//import God;
-//import Jesus;
-//import Buddha;
 
 import java.util.ArrayList;
 

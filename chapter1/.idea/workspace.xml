@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2e58c62-0a76-4105-96d3-d83d325f17ed" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/se233/chapter1/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/se233/chapter1/Launcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/se233/chapter1/controller/AllCustomHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/se233/chapter1/controller/AllCustomHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/se233/chapter1/model/DamageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/se233/chapter1/model/DamageType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/se233/chapter1/model/item/BasedEquipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/se233/chapter1/model/item/BasedEquipment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/se233/chapter1/view/EquipPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/se233/chapter1/view/EquipPane.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +64,7 @@
       <option name="presentableId" value="Default" />
       <updated>1719487154489</updated>
       <workItem from="1719487155358" duration="14000" />
-      <workItem from="1719487173500" duration="3989000" />
+      <workItem from="1719487173500" duration="4241000" />
     </task>
     <servers />
   </component>
