@@ -52,7 +52,7 @@ public class Launcher extends Application {
     }
 
     // Unequip all function - START
-    public static void onUnequip() {
+    public static void unEquipAll() {
         BasedCharacter character = Launcher.getMainCharacter();
         Launcher.setEquippedWeapon(null);
         Launcher.setEquippedArmor(null);

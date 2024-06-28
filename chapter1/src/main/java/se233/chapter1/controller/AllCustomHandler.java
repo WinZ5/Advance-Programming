@@ -23,7 +23,7 @@ public class AllCustomHandler {
             Launcher.setMainCharacter(GenCharacter.setUpCharacter());
             // Unequip all equipments when generate new character - START
             if (Launcher.getEquippedWeapon() != null || Launcher.getEquippedArmor() != null) {
-                Launcher.onUnequip();
+                Launcher.unEquipAll();
             }
             // Unequip all equipments when generate new character - END
             Launcher.refreshPane();

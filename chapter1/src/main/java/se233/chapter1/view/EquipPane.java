@@ -13,8 +13,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import se233.chapter1.Launcher;
-import se233.chapter1.controller.GenItemList;
-import se233.chapter1.model.character.BasedCharacter;
 import se233.chapter1.model.item.Armor;
 import se233.chapter1.model.item.Weapon;
 import se233.chapter1.controller.AllCustomHandler;
@@ -91,7 +89,7 @@ public class EquipPane extends ScrollPane {
         // Unequip Button - START
         Button unEquipButton = new Button();
         unEquipButton.setText("Unequip all");
-        unEquipButton.setOnAction(event -> Launcher.onUnequip());
+        unEquipButton.setOnAction(event -> Launcher.unEquipAll());
         equipmentInfoPane.getChildren().addAll(weaponLbl, weaponImgGroup, armorLbl, armorImgGroup, unEquipButton);
         // Unequip Button - END
         return equipmentInfoPane;
