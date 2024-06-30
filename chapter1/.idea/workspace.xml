@@ -7,8 +7,7 @@
     <list default="true" id="e2e58c62-0a76-4105-96d3-d83d325f17ed" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/se233/chapter1/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/se233/chapter1/Launcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/se233/chapter1/controller/AllCustomHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/se233/chapter1/controller/AllCustomHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/se233/chapter1/view/EquipPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/se233/chapter1/view/EquipPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/se233/chapter1/view/CharacterPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/se233/chapter1/view/CharacterPane.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +70,19 @@
       <workItem from="1719491980865" duration="3381000" />
       <workItem from="1719501168499" duration="2418000" />
       <workItem from="1719583028127" duration="79000" />
+      <workItem from="1719650946197" duration="3199000" />
+      <workItem from="1719673724977" duration="67000" />
+      <workItem from="1719674406938" duration="1205000" />
+      <workItem from="1719677154236" duration="2565000" />
+      <workItem from="1719682181726" duration="2568000" />
+      <workItem from="1719685681521" duration="6983000" />
+      <workItem from="1719695854077" duration="115000" />
+      <workItem from="1719696593464" duration="801000" />
+      <workItem from="1719698351144" duration="1913000" />
+      <workItem from="1719703383788" duration="13000" />
+      <workItem from="1719703463340" duration="1054000" />
+      <workItem from="1719730394383" duration="1044000" />
+      <workItem from="1719738213863" duration="607000" />
     </task>
     <servers />
   </component>
