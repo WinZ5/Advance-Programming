@@ -17,10 +17,12 @@ import java.util.List;
 
 public class FetchData {
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    public static List<CurrencyEntity> fetchRange(String symbol, int N) {
+    public static List<CurrencyEntity> fetchRange(String base, String symbol, int N) {
         String dateEnd = LocalDate.now().format(formatter);
         String dateStart = LocalDate.now().minusDays(N).format(formatter);
-        String urlStr = String.format("https://cmu.to/SE233currencyapi?base=THB&symbol=%s&start_date=%s&end_date=%s", symbol, dateStart, dateEnd);
+        // Design and implement components that enable users to configure the base currency - START
+        String urlStr = String.format("https://cmu.to/SE233currencyapi?base=%s&symbol=%s&start_date=%s&end_date=%s", base, symbol, dateStart, dateEnd);
+        // Design and implement components that enable users to configure the base currency - END
         List<CurrencyEntity> histList = new ArrayList<>();
         try {
             String retrievedJson = IOUtils.toString(new URL(urlStr), Charset.defaultCharset());

@@ -1,6 +1,8 @@
 package se233.chapter2.controller;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextInputDialog;
+import org.json.JSONException;
 import se233.chapter2.Launcher;
 import se233.chapter2.model.Currency;
 import se233.chapter2.model.CurrencyEntity;
@@ -30,8 +32,10 @@ public class AllEventHandlers {
 
             if (code.isPresent()) {
                 List<Currency> currencyList = Launcher.getCurrencyList();
-                Currency c = new Currency(code.get());
-                List< CurrencyEntity> cList = FetchData.fetchRange(c.getShortCode(), 8);
+                // Modify to accept both lowercase and uppercase
+                Currency c = new Currency(code.get().toUpperCase());
+                // Modify the application to display historical exchange rate data for up to 30 days for each currency
+                List<CurrencyEntity> cList = FetchData.fetchRange(Launcher.getBase(), c.getShortCode(), 30);
                 c.setHistorical(cList);
                 c.setCurrent(cList.get(cList.size() - 1));
                 currencyList.add(c);
@@ -42,7 +46,16 @@ public class AllEventHandlers {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
-        }
+            // Implement error handling to notify the user if an invalid currency short code is entered - START
+        } catch (JSONException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("Invalid currency code please try again.");
+            alert.setHeaderText(null);
+            alert.setGraphic(null);
+            alert.showAndWait();
+            // Implement error handling to notify the user if an invalid currency short code is entered - END
+        } catch (IndexOutOfBoundsException e) {}
     }
 
     public static void onDelete(String code) {
@@ -101,4 +114,58 @@ public class AllEventHandlers {
             e.printStackTrace();
         }
     }
+
+    // Add unwatch button - START
+    public static void onUnwatch(String code) {
+        try {
+            List<Currency> currencyList = Launcher.getCurrencyList();
+            int index = -1;
+            for (int i = 0; i < currencyList.size(); i++) {
+                if (currencyList.get(i).getShortCode().equals(code)) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index != -1) {
+                currencyList.get(index).setWatch(false);
+                currencyList.get(index).setWatchRate(0.0);
+                Launcher.setCurrencyList(currencyList);
+                Launcher.refreshPane();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+    // Add unwatch button - END
+
+    // Design and implement components that enable users to configure the base currency - START
+    public static void onConfig() {
+        try {
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle("Config Base currency");
+            dialog.setContentText("Base currency:");
+            dialog.setHeaderText(null);
+            dialog.setGraphic(null);
+            Optional<String> code = dialog.showAndWait();
+            if (code.isPresent()) {
+                Launcher.setBase(code.get().toUpperCase());
+                ArrayList<Currency> currencyList = new ArrayList<>();
+                for (Currency c : Launcher.getCurrencyList()) {
+                    List<CurrencyEntity> cList = FetchData.fetchRange(Launcher.getBase(), c.getShortCode(), 30);
+                    c.setHistorical(cList);
+                    c.setCurrent(cList.get(cList.size() - 1));
+                    currencyList.add(c);
+                }
+                Launcher.setCurrencyList(currencyList);
+                Launcher.refreshPane();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (IndexOutOfBoundsException e) {}
+    }
+    // Design and implement components that enable users to configure the base currency - END
 }

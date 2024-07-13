@@ -1,44 +1,30 @@
 package se233.chapter2.view;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
-import se233.chapter2.controller.AllEventHandlers;
+import se233.chapter2.controller.draw.DrawTopPane;
 
-import java.time.LocalDateTime;
+import java.util.concurrent.*;
 
+// Convert the two sub-panes in the CurrencyPane class into Callable objects - START
 public class TopPane extends FlowPane {
-    private Button refresh;
-    private Button add;
-    private Label update;
 
     public TopPane() {
-        this.setPadding(new Insets(10));
-        this.setHgap(10);
-        this.setPrefSize(640, 20);
-        refresh = new Button("Refresh");
-        add = new Button("Add");
-        refresh.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                AllEventHandlers.onRefresh();
-            }
-        });
-        add.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                AllEventHandlers.onAdd();
-            }
-        });
-        update = new Label();
-        refreshPane();
-        this.getChildren().addAll(refresh, update, add);
+        try {
+            this.refreshPane();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void refreshPane() {
-        update.setText(String.format("Last update: %s", LocalDateTime.now().toString()));
+    public void refreshPane() throws ExecutionException, InterruptedException {
+        FutureTask topPane = new FutureTask(new DrawTopPane());
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(topPane);
+        FlowPane pane = (FlowPane) topPane.get();
+        this.getChildren().clear();
+        this.getChildren().add(pane);
     }
 }
+// Convert the two sub-panes in the CurrencyPane class into Callable objects - END

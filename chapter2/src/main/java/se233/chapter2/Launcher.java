@@ -19,6 +19,8 @@ public class Launcher extends Application {
     private static TopPane topPane;
     private static CurrencyParentPane currencyParentPane;
     private static List<Currency> currencyList;
+    // Design and implement components that enable users to configure the base currency
+    private static String base = "THB";
 
     public static Stage getPrimaryStage() {
         return primaryStage;
@@ -59,6 +61,16 @@ public class Launcher extends Application {
     public static void setCurrencyList(List<Currency> currencyList) {
         Launcher.currencyList = currencyList;
     }
+
+    // Design and implement components that enable users to configure the base currency - START
+    public static String getBase() {
+        return base;
+    }
+
+    public static void setBase(String base) {
+        Launcher.base = base;
+    }
+    // Design and implement components that enable users to configure the base currency - END
 
     @Override
     public void start(Stage stage) throws ExecutionException, InterruptedException {
