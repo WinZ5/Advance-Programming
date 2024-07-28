@@ -30,7 +30,14 @@ public class WordCountReduceTask implements Callable<LinkedHashMap<String, List<
                 ))
                 .entrySet()
                 .stream()
-                .sorted(Map.Entry.comparingByKey())
+                // Sorted by frequency - START
+                .sorted((e1, e2) -> {
+                    int freq1 = e1.getValue().stream().mapToInt(f -> f.getFreq()).sum();
+                    int freq2 = e2.getValue().stream().mapToInt(f -> f.getFreq()).sum();
+
+                    return Integer.compare(freq2, freq1);
+                })
+                // Sorted by frequency - END
                 .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue(), (v1, v2) -> v1, () -> new LinkedHashMap<>()));
 
         return uniqueSets;

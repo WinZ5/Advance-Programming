@@ -6,11 +6,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import se233.chapter3.Launcher;
@@ -19,7 +17,6 @@ import se233.chapter3.model.PdfDocument;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,10 +28,8 @@ import java.util.concurrent.Future;
 public class MainViewController {
     private LinkedHashMap<String, List<FileFreq>> uniqueSets;
     @FXML
-//    private Region dropRegion;
     private ListView<String> inputListView;
     @FXML
-//    private ProgressBar progressBar;
     private Button startButton;
     @FXML
     private ListView listView;
