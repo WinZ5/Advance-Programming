@@ -144,9 +144,11 @@ public class GameCharacter extends Pane {
     public void checkReachGameWall() {
         if (x <= 0) {
             x = 0;
+            // Display a message when a character moves and collides with the game boundary - 1/2
+            logger.info("Game boundary reached.");
         } else if (x + getWidth() >= GameStage.WIDTH) {
             x = GameStage.WIDTH - (int)getWidth();
-            // Display a message when a character moves and collides with the game boundary
+            // Display a message when a character moves and collides with the game boundary - 2/2
             logger.info("Game boundary reached.");
         }
     }
