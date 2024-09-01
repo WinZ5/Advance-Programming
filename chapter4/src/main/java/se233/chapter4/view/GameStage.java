@@ -25,7 +25,7 @@ public class GameStage extends Pane {
         backgroundImg.setFitWidth(WIDTH);
         // Incorporate an additional character into the application. - BEGIN
         mario = new GameCharacter(32, 64, 30, 30, 1, 1, 7, 17, 0, 0, KeyCode.A, KeyCode.D, KeyCode.W, new Image(Launcher.class.getResourceAsStream("assets/MarioSheet.png")), 4, 4, 1, 16, 32);
-        rockman = new GameCharacter(64, 64, 30, 30, 2,1, 14,17,0, 0, KeyCode.LEFT, KeyCode.RIGHT, KeyCode.UP, new Image(Launcher.class.getResourceAsStream("assets/rockman.png")), 10, 5, 2, 540, 512);
+        rockman = new GameCharacter(64, 64, 30, 30, 2,2, 14,34,0, 0, KeyCode.LEFT, KeyCode.RIGHT, KeyCode.UP, new Image(Launcher.class.getResourceAsStream("assets/rockman.png")), 10, 5, 2, 540, 512);
         getChildren().addAll(backgroundImg, mario, rockman);
         // Incorporate an additional character into the application. - END
     }
