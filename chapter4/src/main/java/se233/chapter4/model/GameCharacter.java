@@ -9,9 +9,11 @@ import se233.chapter4.Launcher;
 import se233.chapter4.view.GameStage;
 
 public class GameCharacter extends Pane {
-    public static final int CHARACTER_WIDTH = 32;
-    public static final int CHARACTER_HEIGHT = 64;
     private static final Logger logger = LogManager.getLogger(GameCharacter.class);
+    // Incorporate an additional character into the application. - BEGIN - 1/9
+    public int CHARACTER_WIDTH;
+    public int CHARACTER_HEIGHT;
+    // Incorporate an additional character into the application. - END - 1/9
     private Image gameCharacterImg;
     private AnimatedSprite imageView;
     private int x;
@@ -26,10 +28,10 @@ public class GameCharacter extends Pane {
     boolean isFalling = true;
     boolean canJump = false;
     boolean isJumping = false;
-    int xAcceleration = 1;
-    int yAcceleration = 1;
-    int xMaxVelocity = 7;
-    int yMaxVelocity = 17;
+    int xAcceleration;
+    int yAcceleration;
+    int xMaxVelocity;
+    int yMaxVelocity;
 
     public Image getGameCharacterImg() {
         return gameCharacterImg;
@@ -71,13 +73,20 @@ public class GameCharacter extends Pane {
         return isFalling;
     }
 
-    public GameCharacter(int x, int y, int offsetX, int offsetY, KeyCode leftKey, KeyCode rightKey, KeyCode upKey) {
+    // Incorporate an additional character into the application. - BEGIN - 2/9
+    public GameCharacter(int CHARACTER_WIDTH, int CHARACTER_HEIGHT, int x, int y, int xAcceleration, int yAcceleration, int xMaxVelocity, int yMaxVelocity, int offsetX, int offsetY, KeyCode leftKey, KeyCode rightKey, KeyCode upKey, Image characterSprite, int count, int columns, int rows, int width, int height) {
+        this.CHARACTER_WIDTH = CHARACTER_WIDTH;
+        this.CHARACTER_HEIGHT = CHARACTER_HEIGHT;
         this.x = x;
         this.y = y;
+        this.xAcceleration = xAcceleration;
+        this.yAcceleration = yAcceleration;
+        this.xMaxVelocity = xMaxVelocity;
+        this.yMaxVelocity = yMaxVelocity;
         this.setTranslateX(x);
         this.setTranslateY(y);
-        this.gameCharacterImg = new Image(Launcher.class.getResourceAsStream("assets/MarioSheet.png"));
-        this.imageView = new AnimatedSprite(this.gameCharacterImg, 4, 4, 1, offsetX, offsetY, 16, 32);
+        this.gameCharacterImg = characterSprite;
+        this.imageView = new AnimatedSprite(characterSprite, count, columns, rows, offsetX, offsetY, width, height);
         this.imageView.setFitWidth(CHARACTER_WIDTH);
         this.imageView.setFitHeight(CHARACTER_HEIGHT);
         this.leftKey = leftKey;
@@ -85,6 +94,7 @@ public class GameCharacter extends Pane {
         this.upKey = upKey;
         this.getChildren().addAll(this.imageView);
     }
+    // Incorporate an additional character into the application. - END - 2/9
 
     public void moveLeft() {
         setScaleX(-1);
@@ -136,6 +146,8 @@ public class GameCharacter extends Pane {
             x = 0;
         } else if (x + getWidth() >= GameStage.WIDTH) {
             x = GameStage.WIDTH - (int)getWidth();
+            // Display a message when a character moves and collides with the game boundary
+            logger.info("Game boundary reached.");
         }
     }
 
