@@ -90,7 +90,7 @@ public class GameCharacter extends Pane {
     public void checkReachGameWall() {
         if(x <= 0) {
             x = 0;
-        } else if( x+getWidth() >= GameStage.WIDTH) {
+        } else if(x+getWidth() >= GameStage.WIDTH) {
             x = GameStage.WIDTH-(int)getWidth();
         }
     }
@@ -243,6 +243,26 @@ public class GameCharacter extends Pane {
 
     public boolean isJumping() {
         return isJumping;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setxVelocity(int xVelocity) {
+        this.xVelocity = xVelocity;
+    }
+
+    public void setyVelocity(int yVelocity) {
+        this.yVelocity = yVelocity;
+    }
+
+    public void setCanJump(boolean canJump) {
+        this.canJump = canJump;
+    }
+
+    public void setFalling(boolean falling) {
+        isFalling = falling;
     }
 
     public int getScore() {
