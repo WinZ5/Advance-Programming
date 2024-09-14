@@ -1,18 +1,20 @@
 package se233.chapter5part2;
 
 import javafx.geometry.Point2D;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import se233.chapter5part2.model.Direction;
 import se233.chapter5part2.model.Food;
 import se233.chapter5part2.model.Snake;
+import se233.chapter5part2.model.SpecialFood;
+import se233.chapter5part2.view.Score;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SnakeTest {
     private Snake snake;
+    private Score score;
 
     @BeforeEach
     public void setup() {
@@ -69,4 +71,22 @@ public class SnakeTest {
         snake.grow();
         assertTrue(snake.checkDead());
     }
+
+    // Introduce a scoring mechanism - 10/10
+    @Test
+    public void checkScore_SnakeCollideFood_scoreIncrease() {
+        Food food = new Food(new Point2D(0, 0));
+        snake.collided(food);
+        assertEquals(1, snake.getScore());
+    }
+
+    // introduce special food items worth five points - 6/9
+    @Test
+    public void checkScore_SnakeCollideSpecialFood_scoreIncreaseBy5() {
+        SpecialFood specialFood = new SpecialFood(new Point2D(0, 0));
+        snake.collided(specialFood);
+        assertEquals(5, snake.getScore());
+    }
+
+
 }

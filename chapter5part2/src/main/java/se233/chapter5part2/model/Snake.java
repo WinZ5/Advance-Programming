@@ -11,6 +11,9 @@ public class Snake {
     private Point2D head;
     private Point2D prev_tail;
     private List<Point2D> body;
+    // Introduce a scoring mechanism - 5/10
+    private int score = 0;
+
     public Snake(Point2D position) {
         direction = Direction.DOWN;
         body = new ArrayList<>();
@@ -31,8 +34,37 @@ public class Snake {
     public Point2D getHead() {
         return head;
     }
-    public boolean collided(Food food) { return head.equals(food.getPosition()); }
-    public void grow() { body.add(prev_tail); }
+
+    // Introduce a scoring mechanism - 6/10
+    public int getScore() {
+        return score;
+    }
+
+    // Introduce a scoring mechanism - 7/10
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    // Introduce a scoring mechanism - ??
+    public boolean collided(Food food) {
+        if (head.equals(food.getPosition())) {
+            setScore(score + 1);
+            return true;
+        }
+        return false;
+    }
+    // introduce special food items worth five points - 4/9
+    // Introduce a scoring mechanism - ??
+    public boolean collided(SpecialFood food) {
+        if (food != null && head.equals(food.getPosition())) {
+            setScore(score+5);
+            return true;
+        }
+        return false;
+    }
+    public void grow() {
+        body.add(prev_tail);
+    }
     public int getLength() { return body.size(); }
     public List<Point2D> getBody() { return body; }
     public boolean checkDead() {
