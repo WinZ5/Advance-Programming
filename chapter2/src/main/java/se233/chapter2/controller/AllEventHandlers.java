@@ -2,6 +2,8 @@ package se233.chapter2.controller;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextInputDialog;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONException;
 import se233.chapter2.Launcher;
 import se233.chapter2.model.Currency;
@@ -13,6 +15,9 @@ import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
 public class AllEventHandlers {
+    // Add logger - 3/5
+    public static Logger logger = LogManager.getLogger(AllEventHandlers.class);
+
     public static void onRefresh() {
         try {
             Launcher.refreshPane();
@@ -41,6 +46,8 @@ public class AllEventHandlers {
                 currencyList.add(c);
                 Launcher.setCurrencyList(currencyList);
                 Launcher.refreshPane();
+                // Add logger - 4/5
+                logger.info("{} added", c.getShortCode());
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -74,6 +81,8 @@ public class AllEventHandlers {
                 Launcher.setCurrencyList(currencyList);
                 Launcher.refreshPane();
             }
+            // Add logger - 5/5
+            logger.info("{} deleted", code);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

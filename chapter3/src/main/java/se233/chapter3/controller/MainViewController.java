@@ -14,6 +14,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import se233.chapter3.Launcher;
 import se233.chapter3.model.FileFreq;
 import se233.chapter3.model.PdfDocument;
@@ -30,6 +32,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class MainViewController {
+//    Add Logger - 3/4
+    private static Logger logger = LogManager.getLogger(MainViewController.class);
+
     private LinkedHashMap<String, List<FileFreq>> uniqueSets;
     // Modify ListView to only show file name - 1/5
     private List<String> inputListViewItems = new ArrayList<>();
@@ -97,6 +102,8 @@ public class MainViewController {
                             String filePath = inputListViewItems.get(i);
                             PdfDocument p = new PdfDocument(filePath);
                             completionService.submit(new WordCountMapTask(p));
+                            // Add Logger - 4/4
+                            logger.info("Indexing {}", inputListViewItems.get(i));
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

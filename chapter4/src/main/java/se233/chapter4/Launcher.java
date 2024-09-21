@@ -22,4 +22,7 @@ public class Launcher extends Application {
         (new Thread(gameLoop)).start();
         (new Thread(drawingLoop)).start();
     }
+
+    // Package the entire project 2/3
+    public static void main(String[] args) { launch(args); }
 }

@@ -7,6 +7,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.StackPane;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import se233.chapter1.Launcher;
 import se233.chapter1.model.DamageType;
 import se233.chapter1.model.character.BasedCharacter;
@@ -18,6 +20,9 @@ import java.util.ArrayList;
 
 public class AllCustomHandler {
     public static class GenCharacterHandler implements EventHandler<ActionEvent> {
+        // Add logger - 3/5
+        public static Logger logger = LogManager.getLogger(AllCustomHandler.class);
+
         @Override
         public void handle(ActionEvent event) {
             Launcher.setMainCharacter(GenCharacter.setUpCharacter());
@@ -67,12 +72,16 @@ public class AllCustomHandler {
                     }
                     Launcher.setEquippedWeapon((Weapon) retrievedEquipment);
                     character.equipWeapon((Weapon) retrievedEquipment);
+                    // Add logger - 4/5
+                    logger.info("{} equipped", retrievedEquipment.getName());
                 } else if (retrievedEquipment.getClass().getSimpleName().equals("Armor")) {
                     if (Launcher.getEquippedArmor() != null) {
                         allEquipments.add(Launcher.getEquippedArmor());
                     }
                     Launcher.setEquippedArmor((Armor) retrievedEquipment);
                     character.equipArmor((Armor) retrievedEquipment);
+                    // Add logger - 5/5
+                    logger.info("{} equipped", retrievedEquipment.getName());
                 }
                 Launcher.setMainCharacter(character);
                 Launcher.setAllEquipments(allEquipments);
